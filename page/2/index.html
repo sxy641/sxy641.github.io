@@ -177,6 +177,92 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/28/%E4%B8%93%E9%A2%98%E4%B8%80%E3%80%81%E7%AE%80%E5%8D%95%E6%90%9C%E7%B4%A2/Find-The-Multiple%EF%BC%88POJ1426)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="sxy641">
+      <meta itemprop="description" content="早睡早起">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sxy641">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/28/%E4%B8%93%E9%A2%98%E4%B8%80%E3%80%81%E7%AE%80%E5%8D%95%E6%90%9C%E7%B4%A2/Find-The-Multiple%EF%BC%88POJ1426)/" class="post-title-link" itemprop="url">Find The Multiple（POJ1426)</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-12-28 08:45:10" itemprop="dateCreated datePublished" datetime="2019-12-28T08:45:10+08:00">2019-12-28</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%90%9C%E7%B4%A2/" itemprop="url" rel="index">
+                    <span itemprop="name">搜索</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="Question"><a href="#Question" class="headerlink" title="Question:"></a><a href="https://vjudge.net/problem/POJ-1426" target="_blank" rel="noopener">Question</a>:</h4><blockquote>
+<p>  Given a positive integer n, write a program to find out a nonzero multiple m of n whose decimal representation contains only the digits 0 and 1. You may assume that n is not greater than 200 and there is a corresponding m containing no more than 100 decimal digits. </p>
+</blockquote>
+<h4 id="Input"><a href="#Input" class="headerlink" title="Input:"></a>Input:</h4><blockquote>
+<pre><code>The input file may contain multiple test cases. Each line contains a value of n (1 &lt;= n &lt;= 200). A line containing a zero terminates the input. </code></pre></blockquote>
+<h4 id="Output"><a href="#Output" class="headerlink" title="Output:"></a>Output:</h4><blockquote>
+<p> For each value of n in the input print a line containing the corresponding value of m. The decimal representation of m must not contain more than 100 digits. If there are multiple solutions for a given value of n, any one of them is acceptable. </p>
+</blockquote>
+<h4 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input:"></a>Sample Input:</h4><blockquote>
+<p>2<br>6<br>19<br>0</p>
+</blockquote>
+<h4 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output:"></a>Sample Output:</h4><blockquote>
+<p>10<br>100100100100100100<br>111111111111111111</p>
+</blockquote>
+<h4 id="AC-codes"><a href="#AC-codes" class="headerlink" title="AC codes:"></a>AC codes:</h4><h5 id="版本一（bfs-queue-会tle"><a href="#版本一（bfs-queue-会tle" class="headerlink" title="版本一（bfs+queue) 会tle:"></a>版本一（bfs+queue) 会tle:</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bfs</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">queue</span>&lt;<span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span>&gt; q;</span><br><span class="line">    q.push(<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">while</span>(!q.empty())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span> now;</span><br><span class="line">        now = q.front();</span><br><span class="line">        q.pop();</span><br><span class="line">        <span class="keyword">if</span>(!(now%n))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;now&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        q.push(now*<span class="number">10</span>);</span><br><span class="line">        q.push(now*<span class="number">10</span>+<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span> n;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;n)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(!n) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        bfs(n);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="版本二（bfs-递归）AC："><a href="#版本二（bfs-递归）AC：" class="headerlink" title="版本二（bfs+递归）AC："></a>版本二（bfs+递归）AC：</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span> x;</span><br><span class="line"><span class="keyword">short</span> flag=<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bfs</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span> n, <span class="keyword">int</span> t)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(t&gt;<span class="number">19</span>||!flag) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">if</span>(!(n%x))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;n&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        flag=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    bfs(n*<span class="number">10</span>,t+<span class="number">1</span>);</span><br><span class="line">    bfs(n*<span class="number">10</span>+<span class="number">1</span>,t+<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;x)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(!x) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        flag=<span class="number">1</span>;</span><br><span class="line">        bfs(<span class="number">1</span>,<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/27/%E4%B8%93%E9%A2%98%E4%B8%80%E3%80%81%E7%AE%80%E5%8D%95%E6%90%9C%E7%B4%A2/Fliptile%EF%BC%88POJ3279)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -964,91 +1050,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/17/stack%E2%80%94%E2%80%94%E6%A0%88%20%EF%BC%88The%20SetStack%20Computer%20%20UVA12096)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="sxy641">
-      <meta itemprop="description" content="早睡早起">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="sxy641">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/12/17/stack%E2%80%94%E2%80%94%E6%A0%88%20%EF%BC%88The%20SetStack%20Computer%20%20UVA12096)/" class="post-title-link" itemprop="url">stack——栈 （UVA12096)</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2019-12-17 22:00:16 / Modified: 22:07:25" itemprop="dateCreated datePublished" datetime="2019-12-17T22:00:16+08:00">2019-12-17</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/STL-fresher/" itemprop="url" rel="index">
-                    <span itemprop="name">STL fresher</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="stack——栈-（UVA12096"><a href="#stack——栈-（UVA12096" class="headerlink" title="stack——栈 （UVA12096)"></a>stack——栈 （UVA12096)</h2><p><strong>简介</strong>： </p>
-<p>1.栈是STL提供的3种特殊的数据结构之一（其他两种分别是队列和优先队列）</p>
-<p>2.栈是符合“后进后出”（Last In First Out, LIFO)规则的数据结构</p>
-<p>3.有push, pop, top等操作</p>
-<p>4.头文件及声明方法</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stack&gt;  //头文件</span></span></span><br><span class="line"><span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; s;  <span class="comment">//声明一个栈</span></span><br></pre></td></tr></table></figure>
-
-
-
-<p><strong>例题：集合栈计算机 (UVA12096)</strong>:</p>
-<p><em>题目描述：</em></p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">有一个专门为了集合运算而设计的“集合栈”计算机。该机器有一个初始为空的栈，并且支持以下操作：</span><br><span class="line">PUSH：空集“&#123;&#125;”入栈</span><br><span class="line">DUP：把当前栈顶元素复制一份后再入栈</span><br><span class="line">UNION：出栈两个集合，然后把两者的并集入栈</span><br><span class="line">INTERSECT：出栈两个集合，然后把二者的交集入栈</span><br><span class="line">ADD：出栈两个集合，然后把先出栈的集合加入到后出栈的集合中，把结果入栈</span><br><span class="line"><span class="code">       每次操作后，输出栈顶集合的大小（即元素个数）。例如栈顶元素是A=&#123; &#123;&#125;， &#123;&#123;&#125;&#125; &#125;， 下一个元素是B=&#123; &#123;&#125;， &#123;&#123;&#123;&#125;&#125;&#125; &#125;，则：</span></span><br><span class="line">UNION操作将得到&#123; &#123;&#125;， &#123;&#123;&#125;&#125;， &#123;&#123;&#123;&#125;&#125;&#125; &#125;，输出3.</span><br><span class="line">INTERSECT操作将得到&#123; &#123;&#125; &#125;，输出1</span><br><span class="line">ADD操作将得到&#123; &#123;&#125;， &#123;&#123;&#123;&#125;&#125;&#125;， &#123; &#123;&#125;， &#123;&#123;&#125;&#125; &#125; &#125;，输出3.</span><br><span class="line">（输入：先输入测试次数，再输入操作次数，再输入具体操作）</span><br></pre></td></tr></table></figure>
-
-<p>代码如下：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ALL(x) x.begin(),x.end()</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> INS(x) inserter(x,x.begin())</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt; Set;</span><br><span class="line"><span class="built_in">map</span>&lt;Set,<span class="keyword">int</span>&gt; IDcache;</span><br><span class="line"><span class="built_in">vector</span>&lt;Set&gt; Setcache;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">ID</span><span class="params">(Set x)</span> <span class="comment">//给栈中的每一个集合一个ID值</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(IDcache.count(x)) <span class="keyword">return</span> IDcache[x]; <span class="comment">//查找映射中有无含有给定集合的ID</span></span><br><span class="line">    Setcache.push_back(x); <span class="comment">//如果给定集合的ID不存在，将其压入vector中</span></span><br><span class="line">    <span class="keyword">return</span> IDcache[x]=Setcache.size()<span class="number">-1</span>;  <span class="comment">//集合的ID值从0开始</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">    <span class="keyword">while</span>(n--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; s;</span><br><span class="line">        <span class="keyword">int</span> m;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;m;</span><br><span class="line">        <span class="keyword">while</span>(m--)&#123;</span><br><span class="line">        <span class="built_in">string</span> ss;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;ss;</span><br><span class="line">        <span class="keyword">if</span>(ss[<span class="number">0</span>]==<span class="string">'P'</span>) s.push(ID(Set()));</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(ss[<span class="number">0</span>]==<span class="string">'D'</span>) s.push(s.top());</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            Set x1=Setcache[s.top()]; s.pop();</span><br><span class="line">            Set x2=Setcache[s.top()]; s.pop();</span><br><span class="line">            Set x;</span><br><span class="line">            <span class="keyword">if</span>(ss[<span class="number">0</span>]==<span class="string">'U'</span>) set_union(ALL(x1), ALL(x2), INS(x));  <span class="comment">//并集函数，头文件是&lt;algorithm&gt;</span></span><br><span class="line">            <span class="keyword">if</span>(ss[<span class="number">0</span>]==<span class="string">'I'</span>) set_intersection(ALL(x1), ALL(x2), INS(x));</span><br><span class="line">            <span class="keyword">if</span>(ss[<span class="number">0</span>]==<span class="string">'A'</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                x=x2;</span><br><span class="line">                x.insert(ID(x1));</span><br><span class="line">            &#125;</span><br><span class="line">            s.push(ID(x));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;Setcache[s.top()].size()&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"***"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1119,7 +1120,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-count">25</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

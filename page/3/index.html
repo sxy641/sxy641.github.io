@@ -177,6 +177,91 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/17/stack%E2%80%94%E2%80%94%E6%A0%88%20%EF%BC%88The%20SetStack%20Computer%20%20UVA12096)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="sxy641">
+      <meta itemprop="description" content="早睡早起">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sxy641">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/17/stack%E2%80%94%E2%80%94%E6%A0%88%20%EF%BC%88The%20SetStack%20Computer%20%20UVA12096)/" class="post-title-link" itemprop="url">stack——栈 （UVA12096)</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2019-12-17 22:00:16 / Modified: 22:07:25" itemprop="dateCreated datePublished" datetime="2019-12-17T22:00:16+08:00">2019-12-17</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/STL-fresher/" itemprop="url" rel="index">
+                    <span itemprop="name">STL fresher</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="stack——栈-（UVA12096"><a href="#stack——栈-（UVA12096" class="headerlink" title="stack——栈 （UVA12096)"></a>stack——栈 （UVA12096)</h2><p><strong>简介</strong>： </p>
+<p>1.栈是STL提供的3种特殊的数据结构之一（其他两种分别是队列和优先队列）</p>
+<p>2.栈是符合“后进后出”（Last In First Out, LIFO)规则的数据结构</p>
+<p>3.有push, pop, top等操作</p>
+<p>4.头文件及声明方法</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stack&gt;  //头文件</span></span></span><br><span class="line"><span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; s;  <span class="comment">//声明一个栈</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>例题：集合栈计算机 (UVA12096)</strong>:</p>
+<p><em>题目描述：</em></p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">有一个专门为了集合运算而设计的“集合栈”计算机。该机器有一个初始为空的栈，并且支持以下操作：</span><br><span class="line">PUSH：空集“&#123;&#125;”入栈</span><br><span class="line">DUP：把当前栈顶元素复制一份后再入栈</span><br><span class="line">UNION：出栈两个集合，然后把两者的并集入栈</span><br><span class="line">INTERSECT：出栈两个集合，然后把二者的交集入栈</span><br><span class="line">ADD：出栈两个集合，然后把先出栈的集合加入到后出栈的集合中，把结果入栈</span><br><span class="line"><span class="code">       每次操作后，输出栈顶集合的大小（即元素个数）。例如栈顶元素是A=&#123; &#123;&#125;， &#123;&#123;&#125;&#125; &#125;， 下一个元素是B=&#123; &#123;&#125;， &#123;&#123;&#123;&#125;&#125;&#125; &#125;，则：</span></span><br><span class="line">UNION操作将得到&#123; &#123;&#125;， &#123;&#123;&#125;&#125;， &#123;&#123;&#123;&#125;&#125;&#125; &#125;，输出3.</span><br><span class="line">INTERSECT操作将得到&#123; &#123;&#125; &#125;，输出1</span><br><span class="line">ADD操作将得到&#123; &#123;&#125;， &#123;&#123;&#123;&#125;&#125;&#125;， &#123; &#123;&#125;， &#123;&#123;&#125;&#125; &#125; &#125;，输出3.</span><br><span class="line">（输入：先输入测试次数，再输入操作次数，再输入具体操作）</span><br></pre></td></tr></table></figure>
+
+<p>代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ALL(x) x.begin(),x.end()</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> INS(x) inserter(x,x.begin())</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt; Set;</span><br><span class="line"><span class="built_in">map</span>&lt;Set,<span class="keyword">int</span>&gt; IDcache;</span><br><span class="line"><span class="built_in">vector</span>&lt;Set&gt; Setcache;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">ID</span><span class="params">(Set x)</span> <span class="comment">//给栈中的每一个集合一个ID值</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(IDcache.count(x)) <span class="keyword">return</span> IDcache[x]; <span class="comment">//查找映射中有无含有给定集合的ID</span></span><br><span class="line">    Setcache.push_back(x); <span class="comment">//如果给定集合的ID不存在，将其压入vector中</span></span><br><span class="line">    <span class="keyword">return</span> IDcache[x]=Setcache.size()<span class="number">-1</span>;  <span class="comment">//集合的ID值从0开始</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">    <span class="keyword">while</span>(n--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; s;</span><br><span class="line">        <span class="keyword">int</span> m;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;m;</span><br><span class="line">        <span class="keyword">while</span>(m--)&#123;</span><br><span class="line">        <span class="built_in">string</span> ss;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;ss;</span><br><span class="line">        <span class="keyword">if</span>(ss[<span class="number">0</span>]==<span class="string">'P'</span>) s.push(ID(Set()));</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(ss[<span class="number">0</span>]==<span class="string">'D'</span>) s.push(s.top());</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            Set x1=Setcache[s.top()]; s.pop();</span><br><span class="line">            Set x2=Setcache[s.top()]; s.pop();</span><br><span class="line">            Set x;</span><br><span class="line">            <span class="keyword">if</span>(ss[<span class="number">0</span>]==<span class="string">'U'</span>) set_union(ALL(x1), ALL(x2), INS(x));  <span class="comment">//并集函数，头文件是&lt;algorithm&gt;</span></span><br><span class="line">            <span class="keyword">if</span>(ss[<span class="number">0</span>]==<span class="string">'I'</span>) set_intersection(ALL(x1), ALL(x2), INS(x));</span><br><span class="line">            <span class="keyword">if</span>(ss[<span class="number">0</span>]==<span class="string">'A'</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                x=x2;</span><br><span class="line">                x.insert(ID(x1));</span><br><span class="line">            &#125;</span><br><span class="line">            s.push(ID(x));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;Setcache[s.top()].size()&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"***"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/17/map%E2%80%94%E2%80%94%E6%98%A0%E5%B0%84(UVA156)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -618,7 +703,7 @@ $ hexo server</code></p>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-count">25</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

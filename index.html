@@ -177,6 +177,78 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/28/%E6%9C%80%E7%9F%AD%E8%B7%AF/Currency-Exchange-POJ---1860/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="sxy641">
+      <meta itemprop="description" content="早睡早起">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sxy641">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/01/28/%E6%9C%80%E7%9F%AD%E8%B7%AF/Currency-Exchange-POJ---1860/" class="post-title-link" itemprop="url">Currency Exchange POJ - 1860</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-01-28 11:40:22 / Modified: 11:40:23" itemprop="dateCreated datePublished" datetime="2020-01-28T11:40:22+08:00">2020-01-28</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9C%80%E7%9F%AD%E8%B7%AF/" itemprop="url" rel="index">
+                    <span itemprop="name">最短路</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="求是否是正权环"><a href="#求是否是正权环" class="headerlink" title="求是否是正权环"></a>求是否是正权环</h2><p><a href="https://vjudge.net/problem/POJ-1860" target="_blank" rel="noopener">链接</a></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">105</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF=<span class="number">0x3f3f3f3f</span>;</span><br><span class="line"><span class="keyword">double</span> dis[maxn], cost[maxn][maxn], rate[maxn][maxn];</span><br><span class="line"><span class="keyword">bool</span> visit[maxn];</span><br><span class="line"><span class="keyword">int</span> m,n,p; <span class="comment">//货币种类数、兑换站点个数、Jack所持货币的种类</span></span><br><span class="line"><span class="keyword">double</span> q;  <span class="comment">//Jack所持的货币的总量</span></span><br><span class="line"><span class="keyword">int</span> a,b;  <span class="comment">//一个兑换点允许兑换的货币种类</span></span><br><span class="line"><span class="keyword">double</span> c,d,e,f;  <span class="comment">//汇率、佣金、汇率、佣金</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">spfa</span><span class="params">(<span class="keyword">int</span> st)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    dis[st]=q;</span><br><span class="line">    <span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt;qt;</span><br><span class="line">    qt.push(st);</span><br><span class="line">    <span class="keyword">while</span>(!qt.empty())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> x=qt.front();</span><br><span class="line">        qt.pop();</span><br><span class="line">        visit[x]=<span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=m; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(dis[i]&lt;(dis[x]-cost[x][i])*rate[x][i])</span><br><span class="line">            &#123;</span><br><span class="line">                dis[i]=(dis[x]-cost[x][i])*rate[x][i];</span><br><span class="line">                <span class="keyword">if</span>(dis[st]&gt;q) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">                <span class="keyword">if</span>(!visit[i])</span><br><span class="line">                &#123;</span><br><span class="line">                    visit[i]=<span class="literal">true</span>;</span><br><span class="line">                    qt.push(i);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;m&gt;&gt;n&gt;&gt;p&gt;&gt;q;</span><br><span class="line">    <span class="keyword">int</span> cnt=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(n--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;a&gt;&gt;b&gt;&gt;c&gt;&gt;d&gt;&gt;e&gt;&gt;f;</span><br><span class="line">        cost[a][b]=d;</span><br><span class="line">        cost[b][a]=f;</span><br><span class="line">        rate[a][b]=c;</span><br><span class="line">        rate[b][a]=e;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(spfa(p)) <span class="built_in">cout</span>&lt;&lt;<span class="string">"YES"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="built_in">cout</span>&lt;&lt;<span class="string">"NO"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/24/%E6%9C%80%E7%9F%AD%E8%B7%AF/Silver-Cow-Party-POJ---3268/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -868,92 +940,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/28/%E4%B8%93%E9%A2%98%E4%B8%80%E3%80%81%E7%AE%80%E5%8D%95%E6%90%9C%E7%B4%A2/Find-The-Multiple%EF%BC%88POJ1426)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="sxy641">
-      <meta itemprop="description" content="早睡早起">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="sxy641">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/12/28/%E4%B8%93%E9%A2%98%E4%B8%80%E3%80%81%E7%AE%80%E5%8D%95%E6%90%9C%E7%B4%A2/Find-The-Multiple%EF%BC%88POJ1426)/" class="post-title-link" itemprop="url">Find The Multiple（POJ1426)</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2019-12-28 08:45:10" itemprop="dateCreated datePublished" datetime="2019-12-28T08:45:10+08:00">2019-12-28</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%90%9C%E7%B4%A2/" itemprop="url" rel="index">
-                    <span itemprop="name">搜索</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="Question"><a href="#Question" class="headerlink" title="Question:"></a><a href="https://vjudge.net/problem/POJ-1426" target="_blank" rel="noopener">Question</a>:</h4><blockquote>
-<p>  Given a positive integer n, write a program to find out a nonzero multiple m of n whose decimal representation contains only the digits 0 and 1. You may assume that n is not greater than 200 and there is a corresponding m containing no more than 100 decimal digits. </p>
-</blockquote>
-<h4 id="Input"><a href="#Input" class="headerlink" title="Input:"></a>Input:</h4><blockquote>
-<pre><code>The input file may contain multiple test cases. Each line contains a value of n (1 &lt;= n &lt;= 200). A line containing a zero terminates the input. </code></pre></blockquote>
-<h4 id="Output"><a href="#Output" class="headerlink" title="Output:"></a>Output:</h4><blockquote>
-<p> For each value of n in the input print a line containing the corresponding value of m. The decimal representation of m must not contain more than 100 digits. If there are multiple solutions for a given value of n, any one of them is acceptable. </p>
-</blockquote>
-<h4 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input:"></a>Sample Input:</h4><blockquote>
-<p>2<br>6<br>19<br>0</p>
-</blockquote>
-<h4 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output:"></a>Sample Output:</h4><blockquote>
-<p>10<br>100100100100100100<br>111111111111111111</p>
-</blockquote>
-<h4 id="AC-codes"><a href="#AC-codes" class="headerlink" title="AC codes:"></a>AC codes:</h4><h5 id="版本一（bfs-queue-会tle"><a href="#版本一（bfs-queue-会tle" class="headerlink" title="版本一（bfs+queue) 会tle:"></a>版本一（bfs+queue) 会tle:</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bfs</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">queue</span>&lt;<span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span>&gt; q;</span><br><span class="line">    q.push(<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">while</span>(!q.empty())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span> now;</span><br><span class="line">        now = q.front();</span><br><span class="line">        q.pop();</span><br><span class="line">        <span class="keyword">if</span>(!(now%n))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;now&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        q.push(now*<span class="number">10</span>);</span><br><span class="line">        q.push(now*<span class="number">10</span>+<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span> n;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;n)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(!n) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        bfs(n);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h5 id="版本二（bfs-递归）AC："><a href="#版本二（bfs-递归）AC：" class="headerlink" title="版本二（bfs+递归）AC："></a>版本二（bfs+递归）AC：</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span> x;</span><br><span class="line"><span class="keyword">short</span> flag=<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bfs</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span> n, <span class="keyword">int</span> t)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(t&gt;<span class="number">19</span>||!flag) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">if</span>(!(n%x))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;n&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        flag=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    bfs(n*<span class="number">10</span>,t+<span class="number">1</span>);</span><br><span class="line">    bfs(n*<span class="number">10</span>+<span class="number">1</span>,t+<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;x)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(!x) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        flag=<span class="number">1</span>;</span><br><span class="line">        bfs(<span class="number">1</span>,<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1024,7 +1010,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-count">25</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
