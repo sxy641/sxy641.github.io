@@ -177,6 +177,98 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/18/priority_queue%E2%80%94%E2%80%94%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97(Ugly-Numbers-UVa136)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="sxy641">
+      <meta itemprop="description" content="早睡早起">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sxy641">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/18/priority_queue%E2%80%94%E2%80%94%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97(Ugly-Numbers-UVa136)/" class="post-title-link" itemprop="url">priority_queue——优先队列(Ugly Numbers UVa136)</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-12-18 09:44:21" itemprop="dateCreated datePublished" datetime="2019-12-18T09:44:21+08:00">2019-12-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-01-29 15:16:21" itemprop="dateModified" datetime="2020-01-29T15:16:21+08:00">2020-01-29</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/category/STL-fresher/" itemprop="url" rel="index">
+                    <span itemprop="name">STL fresher</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><strong>方法</strong>：与queue基本相同，但front()要改为top()</p>
+<p><strong>重载运算符</strong>：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义结构，使用运算符重载,自定义优先级1  </span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">cmp1</span>&#123;</span>  </span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">operator</span> <span class="params">()</span><span class="params">(<span class="keyword">int</span> &amp;a,<span class="keyword">int</span> &amp;b)</span></span>&#123;  </span><br><span class="line">        <span class="keyword">return</span> a&gt;b;<span class="comment">//最小值优先  </span></span><br><span class="line">    &#125;  </span><br><span class="line">&#125;;  </span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">cmp2</span>&#123;</span>  </span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">operator</span> <span class="params">()</span><span class="params">(<span class="keyword">int</span> &amp;a,<span class="keyword">int</span> &amp;b)</span></span>&#123;  </span><br><span class="line">        <span class="keyword">return</span> a&lt;b;<span class="comment">//最大值优先  </span></span><br><span class="line">    &#125;  </span><br><span class="line">&#125;;  </span><br><span class="line"><span class="comment">//定义结构，使用运算符重载,自定义优先级2  </span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">number1</span>&#123;</span>  </span><br><span class="line">    <span class="keyword">int</span> x;  </span><br><span class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span> &lt; (<span class="keyword">const</span> number1 &amp;a) <span class="keyword">const</span> &#123;  </span><br><span class="line">        <span class="keyword">return</span> x&gt;a.x;<span class="comment">//最小值优先  </span></span><br><span class="line">    &#125;  </span><br><span class="line">&#125;;  </span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">number2</span>&#123;</span>  </span><br><span class="line">    <span class="keyword">int</span> x;  </span><br><span class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span> &lt; (<span class="keyword">const</span> number2 &amp;a) <span class="keyword">const</span> &#123;  </span><br><span class="line">        <span class="keyword">return</span> x&lt;a.x;<span class="comment">//最大值优先  </span></span><br><span class="line">    &#125;  </span><br><span class="line">&#125;;  </span><br><span class="line">  </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span>  </span></span><br><span class="line"><span class="function"></span>&#123;   priority_queue&lt;<span class="keyword">int</span>&gt;que;<span class="comment">//采用默认优先级构造队列  </span></span><br><span class="line">  </span><br><span class="line">    priority_queue&lt;<span class="keyword">int</span>,<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;,cmp1&gt;que1;<span class="comment">//最小值优先  </span></span><br><span class="line">    priority_queue&lt;<span class="keyword">int</span>,<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;,cmp2&gt;que2;<span class="comment">//最大值优先  </span></span><br><span class="line">  </span><br><span class="line">    priority_queue&lt;<span class="keyword">int</span>,<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;,greater&lt;<span class="keyword">int</span>&gt; &gt;que3;<span class="comment">//注意“&gt;&gt;”会被认为错误，  </span></span><br><span class="line">                                                      <span class="comment">//这是右移运算符，所以这里用空格号隔开  </span></span><br><span class="line">    priority_queue&lt;<span class="keyword">int</span>,<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;,less&lt;<span class="keyword">int</span>&gt; &gt;que4;<span class="comment">////最大值优先  </span></span><br><span class="line">  </span><br><span class="line">    priority_queue&lt;number1&gt;que5;  <span class="comment">//结构体优先队列</span></span><br><span class="line">    priority_queue&lt;number2&gt;que6;  <span class="comment">//结构体优先队列</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>例题</strong>：</p>
+<blockquote>
+<p>题目描述：</p>
+<p>我们把只包含因子2、3和5的数称作丑数（Ugly Number）。求按从小到大的顺序的第1500个丑数。例如6、8都是丑数，但14不是，因为它包含因子7。习惯上我们把1当做第一个丑数</p>
+</blockquote>
+<p><strong>AC代码</strong>：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//#include&lt;bits/stdc++.h&gt;</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    priority_queue&lt;<span class="keyword">long</span> <span class="keyword">long</span>, <span class="built_in">vector</span>&lt;<span class="keyword">long</span> <span class="keyword">long</span>&gt;, greater&lt;<span class="keyword">long</span> <span class="keyword">long</span>&gt; &gt;q;</span><br><span class="line">    <span class="built_in">set</span>&lt;<span class="keyword">long</span> <span class="keyword">long</span>&gt; s;</span><br><span class="line">    <span class="keyword">int</span> arr[]=&#123;<span class="number">2</span>,<span class="number">3</span>,<span class="number">5</span>&#125;;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> x;</span><br><span class="line">    x = <span class="number">1</span>;</span><br><span class="line">    q.push(x);</span><br><span class="line">    s.insert(x);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; ; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        x = q.top();</span><br><span class="line">        q.pop();</span><br><span class="line">        <span class="keyword">if</span>(i==<span class="number">1500</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;x;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;<span class="number">3</span>; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">long</span> <span class="keyword">long</span> t=arr[j]*x;</span><br><span class="line">            <span class="keyword">if</span>(!s.count(t))&#123;</span><br><span class="line">                q.push(t);</span><br><span class="line">                s.insert(t);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>感想</strong>：题目难度一般，考察了逆向思维，并且利用set()去重，注意不用long long 过不了。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/18/queue%E2%80%94%E2%80%94%E9%98%9F%E5%88%97(Team-Queue-UVa540)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -737,7 +829,7 @@ $ hexo server</code></p>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-count">26</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
