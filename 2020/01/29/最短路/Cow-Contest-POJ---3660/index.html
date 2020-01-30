@@ -46,15 +46,15 @@
   };
 </script>
 
-  <meta name="description" content="判断某个点在所有点中的位置是否是确定的（Floyd)链接 run time error数组开大了 1234567891011121314151617181920212223242526272829303132333435363738#include &amp;lt;iostream&amp;gt;using namespace std;const int maxn=102;int dis[maxn][maxn];">
+  <meta name="description" content="判断某个点在所有点中的位置是否是确定的（Floyd)链接 1234567891011121314151617181920212223242526272829303132333435363738#include &amp;lt;iostream&amp;gt;using namespace std;const int maxn=102;int dis[maxn][maxn];int main()&amp;#123;">
 <meta name="keywords" content="最短路">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Cow Contest POJ - 3660">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;29&#x2F;%E6%9C%80%E7%9F%AD%E8%B7%AF&#x2F;Cow-Contest-POJ---3660&#x2F;index.html">
 <meta property="og:site_name" content="sxy641">
-<meta property="og:description" content="判断某个点在所有点中的位置是否是确定的（Floyd)链接 run time error数组开大了 1234567891011121314151617181920212223242526272829303132333435363738#include &amp;lt;iostream&amp;gt;using namespace std;const int maxn=102;int dis[maxn][maxn];">
+<meta property="og:description" content="判断某个点在所有点中的位置是否是确定的（Floyd)链接 1234567891011121314151617181920212223242526272829303132333435363738#include &amp;lt;iostream&amp;gt;using namespace std;const int maxn=102;int dis[maxn][maxn];int main()&amp;#123;">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-01-29T13:17:10.694Z">
+<meta property="og:updated_time" content="2020-01-30T05:43:07.156Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://yoursite.com/2020/01/29/%E6%9C%80%E7%9F%AD%E8%B7%AF/Cow-Contest-POJ---3660/">
@@ -204,6 +204,13 @@
 
               <time title="Created: 2020-01-29 21:17:10" itemprop="dateCreated datePublished" datetime="2020-01-29T21:17:10+08:00">2020-01-29</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-01-30 13:43:07" itemprop="dateModified" datetime="2020-01-30T13:43:07+08:00">2020-01-30</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -228,7 +235,6 @@
 
       
         <h2 id="判断某个点在所有点中的位置是否是确定的（Floyd"><a href="#判断某个点在所有点中的位置是否是确定的（Floyd" class="headerlink" title="判断某个点在所有点中的位置是否是确定的（Floyd)"></a>判断某个点在所有点中的位置是否是确定的（Floyd)</h2><p><a href="https://vjudge.net/problem/POJ-3660" target="_blank" rel="noopener">链接</a></p>
-<p>run time error数组开大了</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">102</span>;</span><br><span class="line"><span class="keyword">int</span> dis[maxn][maxn];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n, m;  <span class="comment">//奶牛的总数量， 比赛的数量；</span></span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m;</span><br><span class="line">    <span class="keyword">int</span> a,b;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>; j&lt;=n; j++)</span><br><span class="line">            dis[i][j]=<span class="number">0</span>;  <span class="comment">//“0”为为确立关系， “1”为关系已确立；</span></span><br><span class="line">    <span class="keyword">while</span>(m--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;a&gt;&gt;b;</span><br><span class="line">        dis[a][b]=<span class="number">1</span>;  <span class="comment">//输入时不能加dis[b][a],关系就乱了。</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">1</span>; k&lt;=n; k++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>; j&lt;=n; j++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(k!=i&amp;&amp;k!=j&amp;&amp;i!=j)</span><br><span class="line">                    <span class="keyword">if</span>(dis[i][k]&amp;&amp;dis[k][j]) dis[i][j]=<span class="number">1</span>;  <span class="comment">//不能加dis[j][i]=1,原因同上；</span></span><br><span class="line">            &#125;</span><br><span class="line">    <span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> cnt=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>; j&lt;=n; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(dis[i][j]||dis[j][i]) ++cnt;  <span class="comment">//这里用或，无论是击败还是被击败，关系都是确立的；</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(cnt==n<span class="number">-1</span>) ++ans;  <span class="comment">//只要一个点和其他所有点的关系确定了， 那这个点的位置就是确定的</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
@@ -252,7 +258,10 @@
     <a href="/2020/01/29/%E6%9C%80%E7%9F%AD%E8%B7%AF/MPI-Maelstrom-POJ---1502/" rel="prev" title="MPI Maelstrom POJ - 1502">
       <i class="fa fa-chevron-left"></i> MPI Maelstrom POJ - 1502
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2020/01/30/%E6%9C%80%E7%9F%AD%E8%B7%AF/Arbitrage-POJ---2240/" rel="next" title="Arbitrage POJ - 2240">
+      Arbitrage POJ - 2240 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -326,7 +335,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-count">27</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
